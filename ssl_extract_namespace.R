@@ -20,14 +20,14 @@ Sys.setlocale(,"ru_RU")
 
 # install packages if missing
 for (package in c('docxtractr', 'dplyr')) {
-    if (!require(package, character.only=T, quietly=T)) {
+    if (!require(package, character.only = T, quietly = T)) {
         install.packages(package)
-        library(package, character.only=T)
+        library(package, character.only = T)
     }
 }
 
 # process .docx files from the current directory
-filenames <- Sys.glob("*.docx")
+filenames <- Sys.glob('*.docx')
 for (fn in filenames) {
     
     # read all tables from docx
@@ -41,7 +41,7 @@ for (fn in filenames) {
     names(tables) <- c('Russian', 'English')
     
     # filter segments with no spaces and punctuation in Russian
-    tables$nospace <- grepl('^[А-Яа-я]*$', tables$Russian)
+    tables$nospace <- grepl('^[А-Яа-я]+$', tables$Russian)
     tables <- filter(tables, nospace == T)
     
     # order alphabetically, leave unique rows only, remove 'nospace' column
