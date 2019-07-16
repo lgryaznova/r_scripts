@@ -3,3 +3,4 @@
 *.doc
 *.xlsx
 *.xls
+.Rhistory
